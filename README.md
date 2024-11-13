@@ -1,5 +1,10 @@
 # Moonshot
 
+- LazyVStack 
+- NavigationLink
+- LazyVGrid
+- GridItem
+
 ### Resizing images to fit the available space 
 
 ```swift
