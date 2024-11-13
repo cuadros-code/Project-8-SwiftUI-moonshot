@@ -10,7 +10,7 @@ Image(.colombia)
         size * 0.8
     }
 ```
-
+---
 
 ### How ScrollView lets us work with scrolling data
 
@@ -45,6 +45,7 @@ struct ContentView: View {
     }
 }
 ```
+---
 
 ### Pushing new views onto the stack using NavigationLink
 
@@ -74,4 +75,49 @@ struct ContentView: View {
         }
     }
 }
+```
+---
+
+### Working with hierarchical Codable data
+
+```swift 
+import SwiftUI
+
+struct User: Codable {
+    let name: String
+    let address: Address
+}
+
+struct Address: Codable {
+    let street: String
+    let city: String
+}
+
+struct ContentView: View {
+    var body: some View {
+        Button("Decode JSON") {
+            let input = """
+                {
+                    "name": "Taylor Swift",
+                    "address": {
+                        "street": "555, Taylor Swift Avenue",
+                        "city": "Nashville"
+                    }
+                }
+                """
+            
+            let data = Data(input.utf8)
+            
+            if let user = try? JSONDecoder().decode(User.self, from: data) {
+                print(user.address.street)
+            }
+        }
+    }
+}
+```
+---
+
+### How to lay out views in a scrolling grid
+
+```swift
 ```
