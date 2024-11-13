@@ -11,3 +11,67 @@ Image(.colombia)
     }
 ```
 
+
+### How ScrollView lets us work with scrolling data
+
+
+```swift
+import SwiftUI
+
+struct CustomText: View {
+    let text: String
+    
+    var body: some View {
+        Text(text)
+    }
+    
+    init(text: String) {
+        print("Creating a CustomText")
+        self.text = text
+    }
+}
+
+struct ContentView: View {
+    var body: some View {
+        ScrollView {
+            LazyVStack(spacing: 10) {
+                ForEach(0..<100) {
+                    CustomText( text: "Item \($0)")
+                        .font(.title)
+                }
+            }
+            .frame(maxWidth: .infinity)
+        }
+    }
+}
+```
+
+### Pushing new views onto the stack using NavigationLink
+
+```swift
+import SwiftUI
+
+struct ContentView: View {
+    var body: some View {
+        NavigationStack {
+            List(0..<10) { row in
+                NavigationLink("Row \(row)") {
+                    Text("Detail \(row)")
+                }
+            }
+            
+            NavigationLink {
+                Text("Detail View")
+            } label: {
+                VStack {
+                    Text("This is a label")
+                    Text("So is this")
+                    Image(systemName: "face.smiling")
+                }
+            }
+            
+            .navigationTitle("SwiftUI")
+        }
+    }
+}
+```

@@ -9,12 +9,25 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Image(.colombia)
-            .resizable()
-            .scaledToFit()
-            .containerRelativeFrame(.horizontal) { size, axis in
-                size * 0.8
+        NavigationStack {
+            List(0..<10) { row in
+                NavigationLink("Row \(row)") {
+                    Text("Detail \(row)")
+                }
             }
+            
+            NavigationLink {
+                Text("Detail View")
+            } label: {
+                VStack {
+                    Text("This is a label")
+                    Text("So is this")
+                    Image(systemName: "face.smiling")
+                }
+            }
+            
+            .navigationTitle("SwiftUI")
+        }
     }
 }
 
