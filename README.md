@@ -4,6 +4,8 @@
 - NavigationLink
 - LazyVGrid
 - GridItem
+- Generics
+- extension
 
 ### Resizing images to fit the available space 
 

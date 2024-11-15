@@ -20,6 +20,10 @@ extension Bundle {
         }
         
         let decode = JSONDecoder()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "y-MM-dd"
+        
+        decode.dateDecodingStrategy = .formatted(formatter)
         
         do {
             return try decode.decode( T.self, from: data )
