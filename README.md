@@ -6,6 +6,7 @@
 - GridItem
 - Generics
 - extension
+- DateFormatter
 
 ### Resizing images to fit the available space 
 
