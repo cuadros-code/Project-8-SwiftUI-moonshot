@@ -13,9 +13,8 @@ struct ContentView: View {
     let astronausts = Bundle.main.decode("astronauts.json")
     
     var body: some View {
-        ScrollView {
-           
-        }
+        
+        Text(String(astronausts.count))
     }
 }
 
