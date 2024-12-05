@@ -26,12 +26,7 @@ struct ContentView: View {
             ScrollView {
                 LazyVGrid(columns: listMode ? list : columns ) {
                     ForEach(missions) { mission in
-                        NavigationLink {
-                            MissionView(
-                                mission: mission,
-                                astronauts: astronausts
-                            )
-                        } label: {
+                        NavigationLink(value: mission, label: {
                             VStack {
                                 Image(mission.image)
                                     .resizable()
@@ -57,7 +52,7 @@ struct ContentView: View {
                                 RoundedRectangle(cornerRadius: 10)
                                     .stroke(.lightBg)
                             )
-                        }
+                        })
                     }
                 }
                 .padding([.horizontal, .bottom])
@@ -72,6 +67,12 @@ struct ContentView: View {
                     Image(systemName: listMode ? "square.grid.2x2.fill" : "rectangle.grid.1x2.fill" )
                         .foregroundStyle(.lightBg)
                 }
+            }
+            .navigationDestination(for: Mission.self) { i in
+                MissionView(
+                    mission: i,
+                    astronauts: astronausts
+                )
             }
         }
     }
